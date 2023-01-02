@@ -9,9 +9,6 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.api.nvim_command("filetype plugin indent off")
 
-vim.opt.list = true
-vim.opt.listchars:append({ trail = "•" })
-
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/./vim/undodir"
