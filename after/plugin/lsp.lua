@@ -13,6 +13,12 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+end)
+
 lsp.setup()
 
 vim.diagnostic.config({
