@@ -53,4 +53,6 @@ return require('packer').startup(function(use)
 
   use('theprimeagen/harpoon')
   use('ntpeters/vim-better-whitespace')
+
+  use('github/copilot.vim')
 end)
