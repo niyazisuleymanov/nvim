@@ -20,6 +20,9 @@ lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+
+  lsp.default_keymaps({buffer = bufnr})
+  lsp.buffer_autoformat()
 end)
 
 lsp.setup()
