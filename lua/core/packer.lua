@@ -50,4 +50,13 @@ return require('packer').startup(function(use)
   use('ntpeters/vim-better-whitespace')
 
   use('github/copilot.vim')
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
+  use { 'stevearc/dressing.nvim' }
 end)
