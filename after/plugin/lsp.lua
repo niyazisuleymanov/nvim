@@ -16,13 +16,13 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
+lsp.setup_servers({"dartls", force = true})
+lsp.setup_servers({"ols", force = true})
+
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  local opts = { buffer = bufnr, remap = false }
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-
-  lsp.default_keymaps({buffer = bufnr})
-  lsp.buffer_autoformat()
 end)
 
 lsp.setup()
