@@ -17,7 +17,6 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.setup_servers({"dartls", force = true})
-lsp.setup_servers({"ols", force = true})
 
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
