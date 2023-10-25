@@ -24,12 +24,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
 end)
 
-lsp.format_on_save({
-  servers = {
-    ['dartls'] = {'dart'},
-  }
-})
-
 lsp.setup()
 
 vim.diagnostic.config({
