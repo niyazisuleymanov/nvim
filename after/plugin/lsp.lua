@@ -3,6 +3,28 @@ lspconfig.pyright.setup {}
 lspconfig.rust_analyzer.setup {}
 lspconfig.dartls.setup{}
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local servers = { 'pyright', 'rust_analyzer', 'dartls' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    capabilities = capabilities,
+  }
+end
+
+local cmp = require 'cmp'
+cmp.setup {
+  mapping = cmp.mapping.preset.insert({
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+  }),
+  sources = { { name = 'nvim_lsp' } },
+}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)

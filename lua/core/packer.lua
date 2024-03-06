@@ -10,6 +10,8 @@ return require('packer').startup(function(use)
   use 'folke/tokyonight.nvim'
 
   use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
 
   use {
     'nvim-telescope/telescope.nvim',
