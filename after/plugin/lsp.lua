@@ -11,6 +11,11 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
 local cmp = require 'cmp'
 cmp.setup {
   mapping = cmp.mapping.preset.insert({
@@ -32,7 +37,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gd', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
