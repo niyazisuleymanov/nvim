@@ -1,10 +1,14 @@
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.rust_analyzer.setup {}
-lspconfig.dartls.setup{}
+lspconfig.dartls.setup {}
+lspconfig.clangd.setup {}
+lspconfig.gopls.setup {}
+lspconfig.tsserver.setup {}
+lspconfig.htmx.setup {}
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { 'pyright', 'rust_analyzer', 'dartls' }
+local servers = { 'dartls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     capabilities = capabilities,

@@ -26,3 +26,5 @@ vim.opt.colorcolumn = "80"
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.o.signcolumn = "yes"
+
+vim.wo.wrap = false

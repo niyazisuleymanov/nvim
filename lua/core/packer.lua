@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use 'folke/tokyonight.nvim'
+  use "blazkowolf/gruber-darker.nvim"
 
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-cmp'
@@ -22,27 +22,25 @@ return require('packer').startup(function(use)
   use 'stevearc/dressing.nvim'
 
   use {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
+
+  use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
     end,
   }
-
+  use 'ntpeters/vim-better-whitespace'
   use 'mbbill/undotree'
 
   use {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    requires = { { "nvim-lua/plenary.nvim" } }
-  }
-
-  use 'ntpeters/vim-better-whitespace'
-
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
+    'nmac427/guess-indent.nvim',
+    config = function() require('guess-indent').setup {
+      filetype_exclude = { "go" },
+    } end,
   }
 end)
